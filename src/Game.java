@@ -24,6 +24,12 @@ public class Game extends JPanel {
 		g2d.fillOval(x, y, 7, 7);
 	}
 
+	public void bounce(){
+		if (x == 563 || x == 0){
+			x *= -1;
+		}
+	}
+
 	public static void main(String[] args) throws InterruptedException {
 		JFrame frame = new JFrame("Mini Tennis");
 		Game game = new Game();
