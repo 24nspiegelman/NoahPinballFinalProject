@@ -13,6 +13,7 @@ public class Game extends JPanel {
 	private void moveBall() {
 		x = x + 1;
 		y = y + 1;
+		bounce();
 	}
 
 	@Override
