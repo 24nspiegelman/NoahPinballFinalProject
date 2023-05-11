@@ -1,48 +1,220 @@
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.text.AttributedCharacterIterator;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-@SuppressWarnings("serial")
-public class Game extends JPanel {
+public class Game {
+	JFrame frame;
+	JPanel panel;
+	Ball ball;
+	Graphics g;
 
-	int x = 0;
-	int y = 0;
+	public Game(){
 
-	private void moveBall() {
-		x = x + 1;
-		y = y + 1;
-		bounce();
 	}
 
-	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
-		g2d.fillOval(x, y, 7, 7);
-	}
+	public void start(){
+		this.ball = new Ball();
+		this.frame = new JFrame("Pinball");
+		this.panel = new JPanel();
+		this.g = new Graphics() {
+			@Override
+			public Graphics create() {
+				return null;
+			}
 
-	public void bounce(){
-		if (x == 563 || x == 0){
-			x *= -1;
-		}
-	}
+			@Override
+			public void translate(int x, int y) {
 
-	public static void main(String[] args) throws InterruptedException {
-		JFrame frame = new JFrame("Mini Tennis");
-		Game game = new Game();
-		frame.add(game);
+			}
+
+			@Override
+			public Color getColor() {
+				return null;
+			}
+
+			@Override
+			public void setColor(Color c) {
+
+			}
+
+			@Override
+			public void setPaintMode() {
+
+			}
+
+			@Override
+			public void setXORMode(Color c1) {
+
+			}
+
+			@Override
+			public Font getFont() {
+				return null;
+			}
+
+			@Override
+			public void setFont(Font font) {
+
+			}
+
+			@Override
+			public FontMetrics getFontMetrics(Font f) {
+				return null;
+			}
+
+			@Override
+			public Rectangle getClipBounds() {
+				return null;
+			}
+
+			@Override
+			public void clipRect(int x, int y, int width, int height) {
+
+			}
+
+			@Override
+			public void setClip(int x, int y, int width, int height) {
+
+			}
+
+			@Override
+			public Shape getClip() {
+				return null;
+			}
+
+			@Override
+			public void setClip(Shape clip) {
+
+			}
+
+			@Override
+			public void copyArea(int x, int y, int width, int height, int dx, int dy) {
+
+			}
+
+			@Override
+			public void drawLine(int x1, int y1, int x2, int y2) {
+
+			}
+
+			@Override
+			public void fillRect(int x, int y, int width, int height) {
+
+			}
+
+			@Override
+			public void clearRect(int x, int y, int width, int height) {
+
+			}
+
+			@Override
+			public void drawRoundRect(int x, int y, int width, int height, int arcWidth, int arcHeight) {
+
+			}
+
+			@Override
+			public void fillRoundRect(int x, int y, int width, int height, int arcWidth, int arcHeight) {
+
+			}
+
+			@Override
+			public void drawOval(int x, int y, int width, int height) {
+
+			}
+
+			@Override
+			public void fillOval(int x, int y, int width, int height) {
+
+			}
+
+			@Override
+			public void drawArc(int x, int y, int width, int height, int startAngle, int arcAngle) {
+
+			}
+
+			@Override
+			public void fillArc(int x, int y, int width, int height, int startAngle, int arcAngle) {
+
+			}
+
+			@Override
+			public void drawPolyline(int[] xPoints, int[] yPoints, int nPoints) {
+
+			}
+
+			@Override
+			public void drawPolygon(int[] xPoints, int[] yPoints, int nPoints) {
+
+			}
+
+			@Override
+			public void fillPolygon(int[] xPoints, int[] yPoints, int nPoints) {
+
+			}
+
+			@Override
+			public void drawString(String str, int x, int y) {
+
+			}
+
+			@Override
+			public void drawString(AttributedCharacterIterator iterator, int x, int y) {
+
+			}
+
+			@Override
+			public boolean drawImage(Image img, int x, int y, ImageObserver observer) {
+				return false;
+			}
+
+			@Override
+			public boolean drawImage(Image img, int x, int y, int width, int height, ImageObserver observer) {
+				return false;
+			}
+
+			@Override
+			public boolean drawImage(Image img, int x, int y, Color bgcolor, ImageObserver observer) {
+				return false;
+			}
+
+			@Override
+			public boolean drawImage(Image img, int x, int y, int width, int height, Color bgcolor, ImageObserver observer) {
+				return false;
+			}
+
+			@Override
+			public boolean drawImage(Image img, int dx1, int dy1, int dx2, int dy2, int sx1, int sy1, int sx2, int sy2, ImageObserver observer) {
+				return false;
+			}
+
+			@Override
+			public boolean drawImage(Image img, int dx1, int dy1, int dx2, int dy2, int sx1, int sy1, int sx2, int sy2, Color bgcolor, ImageObserver observer) {
+				return false;
+			}
+
+			@Override
+			public void dispose() {
+
+			}
+		};
 		frame.setSize(563, 750);
+		frame.add(panel);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		while (true) {
-			game.moveBall();
-			game.repaint();
-			Thread.sleep(10);
-		}
+	}
+
+	public void render(){
+		this.ball.paint(panel, g, ball);
+	}
+	public JFrame getFrame(){
+		return this.frame;
+	}
+	public Ball getBall(){
+		return this.ball;
+	}
+	public JPanel getPanel(){
+		return this.panel;
 	}
 }
