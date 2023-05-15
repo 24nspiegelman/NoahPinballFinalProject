@@ -1,13 +1,11 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class Ball {
 
-    private int x;
-    private int y;
+    private double x;
+    private double y;
     private double velX;
     private double velY;
 
@@ -16,34 +14,34 @@ public class Ball {
         x = 0;
         y = 0;
         velX = 1;
-        velY = -1;
+        velY = 1;
     }
     public void moveBall() {
-        x = x + 1;
-        y = y + 1;
+        x = x + velX;
+        y = y + velY;
+        bounce();
     }
     public void bounce(){
         if (x == 560 || x == 0){
             velX *= -1;
         }
-        if (y == 0 || y == 745){
+        if (y == 0 || y == 717){
             velY *= -1;
         }
     }
 
-    public void paint(JPanel j, Graphics g, Ball b) {
-        j.paint(g);
+    public void paintBall(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.fillOval(b.getX(), b.getY(), 7, 7);
+        g2d.fillOval((int) getX(), (int) getY(), 7, 7);
     }
 
 
-    public int getX(){
+    public double getX(){
         return this.x;
     }
-    public int getY(){
+    public double getY(){
         return this.y;
     }
     public double getVelX(){
