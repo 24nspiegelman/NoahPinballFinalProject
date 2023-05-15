@@ -8,6 +8,7 @@ public class Ball {
     private double y;
     private double velX;
     private double velY;
+    private double gravity;
 
 
     public Ball(){
@@ -15,10 +16,11 @@ public class Ball {
         y = 0;
         velX = 1;
         velY = 1;
+        gravity = 0.5;
     }
     public void moveBall() {
         x = x + velX;
-        y = y + velY;
+        y = y + velY + gravity;
         bounce();
     }
     public void bounce(){
@@ -34,7 +36,7 @@ public class Ball {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.fillOval((int) getX(), (int) getY(), 7, 7);
+        g2d.fillOval((int) getX(), (int) getY(), 10, 10);
     }
 
 
