@@ -19,15 +19,16 @@ public class Ball {
         gravity = 0.5;
     }
     public void moveBall() {
+        yVel += gravity;
         xPos = xPos + xVel;
-        yPos = yPos + yVel + gravity;
+        yPos = yPos + yVel;
         bounce();
     }
     public void bounce(){
-        if (xPos == 560 || xPos == 0){
+        if ((xPos > 560 && xVel > 0) || (xPos < 0 && xVel <0)){
             xVel *= -1;
         }
-        if (yPos == 0 || yPos == 717){
+        if ((yPos < 0 && yVel < 0) || (yPos > 717 && yVel > 0)){
             yVel *= -1;
         }
     }
@@ -39,6 +40,14 @@ public class Ball {
         g2d.fillOval((int) getXPos(), (int) getYPos(), 10, 10);
     }
 
+    public void flapHit(Flapper l, Flapper r){
+        if (xPos > l.getStartX()  && xPos < l.getEndX() && yPos > l.getStartY() && yPos < l.getEndY()){
+            yVel *= -1;
+        }
+        if (xPos > r.getStartX() && xPos < r.getEndX() && yPos > r.getStartY() && yPos < r.getEndY()){
+            yVel *= -1;
+        }
+    }
 
     public double getXPos(){
         return this.xPos;
