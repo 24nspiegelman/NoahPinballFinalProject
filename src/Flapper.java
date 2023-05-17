@@ -6,11 +6,12 @@ public class Flapper {
     private int startY;
     private int endX;
     private int endY;
+    private double slope;
 
-    public Flapper(int startX, int startY, int endX, int endY){
+    public Flapper(int startX, int endX, int startY, int endY){
         this.startX = startX;
-        this.startY = startY;
         this.endX = endX;
+        this.startY = startY;
         this.endY = endY;
     }
 
@@ -20,6 +21,7 @@ public class Flapper {
                 RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.drawLine(startX, startY, endX, endY);
     }
+
 
     public int getStartX(){
         return startX;

@@ -44,7 +44,7 @@ public class Ball {
         if (xPos > l.getStartX()  && xPos < l.getEndX() && yPos > l.getStartY() && yPos < l.getEndY()){
             yVel *= -1;
         }
-        if (xPos > r.getStartX() && xPos < r.getEndX() && yPos > r.getStartY() && yPos < r.getEndY()){
+       if (xPos > r.getStartX() && xPos < r.getEndX() && yPos > r.getStartY() && yPos < r.getEndY()){
             yVel *= -1;
         }
     }

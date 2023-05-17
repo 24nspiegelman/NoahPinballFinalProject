@@ -13,14 +13,15 @@ public class Game extends JPanel{
 	}
 
 	public void start(){
-		this.ball = new Ball();
-		this.lFlapper = new Flapper(150, 535, 226, 550);
-		this.rFlapper = new Flapper(150, 535, 226, 550);
+		ball = new Ball();
+		lFlapper = new Flapper(150, 226, 535, 550);
+		rFlapper = new Flapper(359, 442, 550, 535);
 	}
 
 	public void paintComponent(Graphics g){
 		ball.paintBall(g);
 		lFlapper.paintFlapper(g);
+		rFlapper.paintFlapper(g);
 	}
 
 
