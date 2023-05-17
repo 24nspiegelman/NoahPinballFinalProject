@@ -44,12 +44,17 @@ public class Ball {
     }
 
     public void flapHit(Flapper l, Flapper r){
-        if (xPos > l.getStartX()  && xPos < l.getEndX() && yPos > l.getStartY() && yPos < l.getEndY() && yVel > 0){
-            yVel *= -1;
+        if (yPos > l.getStartX() + 10){
+            if (xPos > l.getStartX()  && xPos < l.getEndX() && yPos > l.getStartY() && yVel > 0){
+                yVel *= -1;
+            }
         }
-       if (xPos > r.getStartX() && xPos < r.getEndX() && yPos < r.getStartY() && yPos > r.getEndY() && yVel > 0){
-            yVel *= -1;
+        if (yPos > r.getStartX() + 10){
+            if (xPos > r.getStartX() && xPos < r.getEndX() && yPos > r.getStartY() && yVel > 0){
+                yVel *= -1;
+            }
         }
+
     }
 
     public double getXPos(){
