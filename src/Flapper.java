@@ -6,7 +6,8 @@ public class Flapper {
     private int startY;
     private int endX;
     private int endY;
-    private double slope;
+    static final int flapLength = 80;
+
 
     public Flapper(int startX, int endX, int startY, int endY){
         this.startX = startX;
@@ -22,20 +23,31 @@ public class Flapper {
         g2d.drawLine(startX, startY, endX, endY);
     }
 
+    public void moveFlapper(Flapper f, int shift){
+        f.setEndY(shift);
+        f.setEndX(((int) (Math.pow(flapLength, 2))) - ((int) (Math.pow(getEndY(),2))));
+    }
+
 
     public int getStartX(){
         return startX;
     }
-
     public int getStartY(){
         return startY;
     }
-
     public int getEndX(){
         return endX;
     }
-
+    public void setEndX(int xPos){
+        endX = xPos;
+    }
     public int getEndY(){
         return endY;
+    }
+    public void setEndY(int yPos){
+        endY = yPos;
+    }
+    public static int getFlapLength(){
+        return flapLength;
     }
 }
