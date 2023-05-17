@@ -10,6 +10,7 @@ public class Ball {
     private double yVel;
     private double gravity;
 
+    private PosVel ballPosVel;
 
     public Ball(){
         xPos = 0;
@@ -23,6 +24,8 @@ public class Ball {
         xPos = xPos + xVel;
         yPos = yPos + yVel;
         bounce();
+        ballPosVel = new PosVel(this);
+        System.out.println(ballPosVel);
     }
     public void bounce(){
         if ((xPos > 560 && xVel > 0) || (xPos < 0 && xVel <0)){
@@ -41,10 +44,10 @@ public class Ball {
     }
 
     public void flapHit(Flapper l, Flapper r){
-        if (xPos > l.getStartX()  && xPos < l.getEndX() && yPos > l.getStartY() && yPos < l.getEndY()){
+        if (xPos > l.getStartX()  && xPos < l.getEndX() && yPos > l.getStartY() && yPos < l.getEndY() && yVel > 0){
             yVel *= -1;
         }
-       if (xPos > r.getStartX() && xPos < r.getEndX() && yPos > r.getStartY() && yPos < r.getEndY()){
+       if (xPos > r.getStartX() && xPos < r.getEndX() && yPos < r.getStartY() && yPos > r.getEndY() && yVel > 0){
             yVel *= -1;
         }
     }

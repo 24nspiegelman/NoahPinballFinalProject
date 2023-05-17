@@ -14,8 +14,8 @@ public class Game extends JPanel{
 
 	public void start(){
 		ball = new Ball();
-		lFlapper = new Flapper(150, 226, 535, 550);
-		rFlapper = new Flapper(359, 442, 550, 535);
+		lFlapper = new Flapper(150, 226, 535, 535);
+		rFlapper = new Flapper(359, 442, 535, 535);
 	}
 
 	public void paintComponent(Graphics g){
