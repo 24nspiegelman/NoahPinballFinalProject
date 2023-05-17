@@ -25,7 +25,7 @@ public class Flapper {
 
     public void moveFlapper(Flapper f, int shift){
         f.setEndY(shift);
-        f.setEndX(((int) (Math.pow(flapLength, 2))) - ((int) (Math.pow(getEndY(),2))));
+        f.setEndX((int)(Math.sqrt(((int) (Math.pow(flapLength, 2))) - ((int) (Math.pow(getEndY(),2))))));
     }
 
 
