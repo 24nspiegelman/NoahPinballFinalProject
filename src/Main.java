@@ -14,6 +14,8 @@ public class Main {
         while (true) {
             game.getBall().moveBall();
             game.getBall().flapHit(game.getLFlapper(), game.getRFlapper());
+            game.getLFlapper().moveLFlapper(-1);
+            game.getRFlapper().moveRFlapper(-1);
             game.repaint();
             Thread.sleep(10);
         }

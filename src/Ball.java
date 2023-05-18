@@ -19,8 +19,6 @@ public class Ball {
         gravity = 0.5;
     }
     public void moveBall() {
-//        ballPosVel = new PosVel(this);
-//        System.out.println(ballPosVel);
         yVel += gravity;
         xPos = xPos + xVel;
         yPos = yPos + yVel;

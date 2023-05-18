@@ -23,9 +23,14 @@ public class Flapper {
         g2d.drawLine(startX, startY, endX, endY);
     }
 
-    public void moveFlapper(Flapper f, int shift){
-        f.setEndY(shift);
-        f.setEndX((int)(Math.sqrt(((int) (Math.pow(flapLength, 2))) - ((int) (Math.pow(getEndY(),2))))));
+    public void moveLFlapper(int shift){
+        setEndY(getEndY() + shift);
+        setEndX(getStartX() + (int)(Math.sqrt(((Math.pow(flapLength, 2))) - ((Math.pow((getEndY() - getStartY()),2))))));
+    }
+
+    public void moveRFlapper(int shift){
+        setEndY(getEndY() + shift);
+        setEndX(getStartX() - (int)(Math.sqrt(((Math.pow(flapLength, 2))) - ((Math.pow((getEndY() - getStartY()),2))))));
     }
 
 
