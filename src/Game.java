@@ -24,6 +24,28 @@ public class Game extends JPanel{
 		rFlapper.paintFlapper(g);
 	}
 
+	public void setFlaps(int pos){
+		if (pos == 1){
+			lFlapper.moveLFlapper(540);
+			rFlapper.moveRFlapper(540);
+		}
+		else if(pos == 2){
+			lFlapper.moveLFlapper(556);
+			rFlapper.moveRFlapper(556);
+		}
+		else if(pos == 3){
+			lFlapper.moveLFlapper(572);
+			rFlapper.moveRFlapper(572);
+		}
+		else if(pos == 4){
+			lFlapper.moveLFlapper(588);
+			rFlapper.moveRFlapper(588);
+		}
+		else{
+			lFlapper.moveLFlapper(604);
+			rFlapper.moveRFlapper(604);
+		}
+	}
 
 	public JFrame getFrame(){
 		return this.frame;
