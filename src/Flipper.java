@@ -60,10 +60,8 @@ public class Flipper {
     public int getFlipAngleIndex(){
         return flipAngleIndex;
     }
-
-    public void keyPressed() {
-        if (flipAngleIndex > 1){
-            flipAngleIndex--;
-        }
+    public void setFlipAngleIndex(int i){
+        flipAngleIndex = i;
     }
+
 }

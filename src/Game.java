@@ -24,7 +24,7 @@ public class Game extends JPanel{
 						lFlipper.keyPressed();
 					}
 					if (e.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT){
-
+						rFlipper.keyPressed();
 					}
 				}
 			}
@@ -44,31 +44,51 @@ public class Game extends JPanel{
 
 	public void paintComponent(Graphics g){
 		ball.paintBall(g);
-		setFlippers(lFlipper.getFlipAngleIndex());
+		setLFlipper(lFlipper.getFlipAngleIndex());
+		setRFlipper(rFlipper.getFlipAngleIndex());
 		lFlipper.paintFlipper(g);
 		rFlipper.paintFlipper(g);
 	}
 
-	public void setFlippers(int pos){
+	public void setLFlipper(int pos){
 		if (pos == 1){
 			lFlipper.moveLFlipper(540);
-			rFlipper.moveRFlapper(540);
 		}
 		else if(pos == 2){
 			lFlipper.moveLFlipper(556);
-			rFlipper.moveRFlapper(556);
 		}
 		else if(pos == 3){
 			lFlipper.moveLFlipper(572);
-			rFlipper.moveRFlapper(572);
 		}
 		else if(pos == 4){
 			lFlipper.moveLFlipper(588);
-			rFlipper.moveRFlapper(588);
 		}
 		else if (pos == 5){
 			lFlipper.moveLFlipper(604);
+		}
+	}
+
+	public void setRFlipper(int pos){
+		if (pos == 1){
+			rFlipper.moveRFlapper(540);
+		}
+		else if(pos == 2){
+			rFlipper.moveRFlapper(556);
+		}
+		else if(pos == 3){
+			rFlipper.moveRFlapper(572);
+		}
+		else if(pos == 4){
+			rFlipper.moveRFlapper(588);
+		}
+		else if (pos == 5){
 			rFlipper.moveRFlapper(604);
+		}
+	}
+
+	public void keyPressed() {
+		if (lFlipper.getFlipAngleIndex() > 1){
+			lFlipper.setFlipAngleIndex(lFlipper.getFlipAngleIndex()-1);;
 		}
 	}
 
