@@ -40,11 +40,11 @@ public class Ball {
         g2d.fillOval((int) getXPos(), (int) getYPos(), 10, 10);
     }
 
-    public void flapHit(Flapper l, Flapper r){
-        if (xPos > (l.getStartX() - 5)  && xPos < (l.getEndX() + 5) && yPos > (l.getStartY() - 15) && yPos < (l.getStartY() + 10) && yVel > 0){
+    public void flapHit(Flipper l, Flipper r){
+        if (xPos > (l.getStartX() - 5)  && xPos < (l.getEndX() + 5) && yPos > (l.getStartY() - 5) && yPos < (l.getStartY() + 5) && yVel > 0){
                 yVel *= -1;
         }
-        if (xPos > r.getStartX() && xPos < r.getEndX() && yPos > (r.getStartY() - 15) && yPos < (r.getStartY() + 10) && yVel > 0){
+        if (xPos < r.getStartX() && xPos > r.getEndX() && yPos > (r.getStartY() - 5) && yPos < (r.getStartY() + 5) && yVel > 0){
                 yVel *= -1;
 
         }

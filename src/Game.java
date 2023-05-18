@@ -1,49 +1,74 @@
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Game extends JPanel{
 	JFrame frame;
 	Ball ball;
-	Flapper lFlapper;
-	Flapper rFlapper;
+	Flipper lFlipper;
+	Flipper rFlipper;
 
 	public Game(){
+		addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
 
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_SHIFT){
+					if (e.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT){
+						lFlipper.keyPressed();
+					}
+					if (e.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT){
+
+					}
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+			}
+		});
 	}
 
 	public void start(){
 		ball = new Ball();
-		lFlapper = new Flapper(150, 230, 540, 540);
-		rFlapper = new Flapper(430, 350, 540, 540);
+		lFlipper = new Flipper(150, 230, 540, 540);
+		rFlipper = new Flipper(430, 350, 540, 540);
 	}
 
 	public void paintComponent(Graphics g){
 		ball.paintBall(g);
-		lFlapper.paintFlapper(g);
-		rFlapper.paintFlapper(g);
+		setFlippers(lFlipper.getFlipAngleIndex());
+		lFlipper.paintFlipper(g);
+		rFlipper.paintFlipper(g);
 	}
 
-	public void setFlaps(int pos){
+	public void setFlippers(int pos){
 		if (pos == 1){
-			lFlapper.moveLFlapper(540);
-			rFlapper.moveRFlapper(540);
+			lFlipper.moveLFlipper(540);
+			rFlipper.moveRFlapper(540);
 		}
 		else if(pos == 2){
-			lFlapper.moveLFlapper(556);
-			rFlapper.moveRFlapper(556);
+			lFlipper.moveLFlipper(556);
+			rFlipper.moveRFlapper(556);
 		}
 		else if(pos == 3){
-			lFlapper.moveLFlapper(572);
-			rFlapper.moveRFlapper(572);
+			lFlipper.moveLFlipper(572);
+			rFlipper.moveRFlapper(572);
 		}
 		else if(pos == 4){
-			lFlapper.moveLFlapper(588);
-			rFlapper.moveRFlapper(588);
+			lFlipper.moveLFlipper(588);
+			rFlipper.moveRFlapper(588);
 		}
-		else{
-			lFlapper.moveLFlapper(604);
-			rFlapper.moveRFlapper(604);
+		else if (pos == 5){
+			lFlipper.moveLFlipper(604);
+			rFlipper.moveRFlapper(604);
 		}
 	}
 
@@ -53,11 +78,11 @@ public class Game extends JPanel{
 	public Ball getBall(){
 		return this.ball;
 	}
-	public Flapper getLFlapper(){
-		return this.lFlapper;
+	public Flipper getLFlapper(){
+		return this.lFlipper;
 	}
-	public Flapper getRFlapper(){
-		return this.rFlapper;
+	public Flipper getRFlapper(){
+		return this.rFlipper;
 	}
 
 
