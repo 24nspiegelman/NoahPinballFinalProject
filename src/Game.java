@@ -20,10 +20,10 @@ public class Game extends JPanel{
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_SHIFT){
-					if (e.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT){
+					if (e.getKeyLocation() == KeyEvent.VK_SHIFT + KeyEvent.VK_LEFT){
 						setLFlipper(lFlipper.keyPressed());
 					}
-					if (e.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT){
+					if (e.getKeyLocation() == KeyEvent.VK_SHIFT + KeyEvent.VK_RIGHT){
 						setRFlipper(rFlipper.keyPressed());
 					}
 				}
@@ -49,7 +49,6 @@ public class Game extends JPanel{
 		lFlipper.paintFlipper(g);
 		rFlipper.paintFlipper(g);
 	}
-
 	public void setLFlipper(int pos){
 		if (pos == 1){
 			lFlipper.moveLFlipper(540);
