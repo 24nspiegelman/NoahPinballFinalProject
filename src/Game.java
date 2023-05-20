@@ -21,10 +21,10 @@ public class Game extends JPanel{
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_SHIFT){
 					if (e.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT){
-						lFlipper.keyPressed();
+						setLFlipper(lFlipper.keyPressed());
 					}
 					if (e.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT){
-						rFlipper.keyPressed();
+						setRFlipper(rFlipper.keyPressed());
 					}
 				}
 			}
@@ -86,11 +86,6 @@ public class Game extends JPanel{
 		}
 	}
 
-	public void keyPressed() {
-		if (lFlipper.getFlipAngleIndex() > 1){
-			lFlipper.setFlipAngleIndex(lFlipper.getFlipAngleIndex()-1);;
-		}
-	}
 
 	public JFrame getFrame(){
 		return this.frame;

@@ -35,6 +35,14 @@ public class Flipper {
         setEndX(getStartX() - (int)(Math.sqrt(((Math.pow(flapLength, 2))) - ((Math.pow((getEndY() - getStartY()),2))))));
     }
 
+    public int keyPressed() {
+        if (flipAngleIndex > 1){
+            setFlipAngleIndex(flipAngleIndex-1);
+            System.out.println(flipAngleIndex);
+        }
+        return flipAngleIndex;
+    }
+
 
     public int getStartX(){
         return startX;
