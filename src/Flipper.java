@@ -26,11 +26,12 @@ public class Flipper {
     }
 
     public void moveLFlipper(int place){
+        //setStartY(place);
         setEndY(place);
         setEndX(getStartX() + (int)(Math.sqrt(((Math.pow(flapLength, 2))) - ((Math.pow((getEndY() - getStartY()),2))))));
     }
 
-    public void moveRFlapper(int place){
+    public void moveRFlipper(int place){
         setEndY(place);
         setEndX(getStartX() - (int)(Math.sqrt(((Math.pow(flapLength, 2))) - ((Math.pow((getEndY() - getStartY()),2))))));
     }
@@ -49,6 +50,9 @@ public class Flipper {
     }
     public int getStartY(){
         return startY;
+    }
+    public void setStartY(int yPos){
+        startY = yPos;
     }
     public int getEndX(){
         return endX;

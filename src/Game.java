@@ -4,36 +4,15 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Game extends JPanel{
+public class Game extends JPanel implements KeyListener{
 	JFrame frame;
 	Ball ball;
 	Flipper lFlipper;
 	Flipper rFlipper;
 
 	public Game(){
-		addKeyListener(new KeyListener() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_SHIFT){
-					if (e.getKeyLocation() == KeyEvent.VK_SHIFT + KeyEvent.VK_LEFT){
-						setLFlipper(lFlipper.keyPressed());
-					}
-					if (e.getKeyLocation() == KeyEvent.VK_SHIFT + KeyEvent.VK_RIGHT){
-						setRFlipper(rFlipper.keyPressed());
-					}
-				}
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-
-			}
-		});
+		setFocusable(true);
+		this.addKeyListener(this);
 	}
 
 	public void start(){
@@ -69,19 +48,19 @@ public class Game extends JPanel{
 
 	public void setRFlipper(int pos){
 		if (pos == 1){
-			rFlipper.moveRFlapper(540);
+			rFlipper.moveRFlipper(540);
 		}
 		else if(pos == 2){
-			rFlipper.moveRFlapper(556);
+			rFlipper.moveRFlipper(556);
 		}
 		else if(pos == 3){
-			rFlipper.moveRFlapper(572);
+			rFlipper.moveRFlipper(572);
 		}
 		else if(pos == 4){
-			rFlipper.moveRFlapper(588);
+			rFlipper.moveRFlipper(588);
 		}
 		else if (pos == 5){
-			rFlipper.moveRFlapper(604);
+			rFlipper.moveRFlipper(604);
 		}
 	}
 
@@ -99,6 +78,22 @@ public class Game extends JPanel{
 		return this.rFlipper;
 	}
 
+	@Override
+	public void keyTyped(KeyEvent e) {
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT) {
+			lFlipper.keyPressed();
+			setLFlipper(lFlipper.getFlipAngleIndex() - 1);
+		}
+	}
 
 
+	@Override
+	public void keyReleased(KeyEvent e) {
+
+	}
 }

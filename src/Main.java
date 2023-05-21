@@ -12,6 +12,8 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game.start();
 
+        game.requestFocus();
+
         while (true) {
             game.getBall().moveBall();
             game.getBall().flapHit(game.getLFlapper(), game.getRFlapper());
