@@ -9,8 +9,8 @@ public class Game extends JPanel implements KeyListener{
 	Ball ball;
 	Flipper lFlipper;
 	Flipper rFlipper;
-	boolean lShiftDown = false;
-	boolean rShiftDown = false;
+	boolean lShiftDown;
+	boolean rShiftDown;
 
 	public Game(){
 		setFocusable(true);
@@ -30,9 +30,18 @@ public class Game extends JPanel implements KeyListener{
 			lFlipper.keyPressed(lShiftDown);
 			setLFlipper(lFlipper.getFlipAngleIndex() - 1);
 		}
+		else{
+			lFlipper.keyPressed(lShiftDown);
+			setLFlipper(lFlipper.getFlipAngleIndex() + 1);
+		}
+
 		if (rShiftDown){
 			rFlipper.keyPressed(rShiftDown);
 			setLFlipper(rFlipper.getFlipAngleIndex() - 1);
+		}
+		else{
+			rFlipper.keyPressed(rShiftDown);
+			setLFlipper(rFlipper.getFlipAngleIndex() + 1);
 		}
 		repaint();
 	}

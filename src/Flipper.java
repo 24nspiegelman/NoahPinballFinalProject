@@ -37,12 +37,12 @@ public class Flipper {
     }
 
     public void keyPressed(boolean down) {
-        flipAngleIndex -= 1;
-        if (flipAngleIndex < 1 && down == false){
+        this.flipAngleIndex -= 1;
+        if (this.flipAngleIndex < 1 && down == false){
             setFlipAngleIndex(5);
         }
-        if (flipAngleIndex > 1){
-            setFlipAngleIndex(flipAngleIndex);
+        if (this.flipAngleIndex > 1){
+            setFlipAngleIndex(this.flipAngleIndex);
 
         }
     }
