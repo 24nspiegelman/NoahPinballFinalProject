@@ -112,9 +112,11 @@ public class Game extends JPanel implements KeyListener{
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT) {
 			lShiftDown = true;
+			System.out.println("LTrue");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT) {
 			rShiftDown = true;
+			System.out.println("RTrue");
 		}
 	}
 
@@ -123,9 +125,11 @@ public class Game extends JPanel implements KeyListener{
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT) {
 			lShiftDown = false;
+			System.out.println("LFalse");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT) {
 			rShiftDown = false;
+			System.out.println("RFalse");
 		}
 	}
 }

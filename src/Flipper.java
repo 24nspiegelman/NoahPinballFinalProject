@@ -38,9 +38,9 @@ public class Flipper {
 
     public void keyPressed(boolean down) {
         this.flipAngleIndex -= 1;
-        if (this.flipAngleIndex < 1 && down == false){
-            setFlipAngleIndex(5);
-        }
+//        if (this.flipAngleIndex < 1 && down == false){
+//            setFlipAngleIndex(5);
+//        }
         if (this.flipAngleIndex > 1){
             setFlipAngleIndex(this.flipAngleIndex);
 
