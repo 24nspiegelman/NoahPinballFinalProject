@@ -9,6 +9,8 @@ public class Game extends JPanel implements KeyListener{
 	Ball ball;
 	Flipper lFlipper;
 	Flipper rFlipper;
+	boolean lShiftDown = false;
+	boolean rShiftDown = false;
 
 	public Game(){
 		setFocusable(true);
@@ -19,6 +21,20 @@ public class Game extends JPanel implements KeyListener{
 		ball = new Ball();
 		lFlipper = new Flipper(150, 230, 540, 540);
 		rFlipper = new Flipper(430, 350, 540, 540);
+	}
+
+	public void act(){
+		getBall().moveBall();
+		getBall().flapHit(getLFlapper(), getRFlapper());
+		if (lShiftDown){
+			lFlipper.keyPressed(lShiftDown);
+			setLFlipper(lFlipper.getFlipAngleIndex() - 1);
+		}
+		if (rShiftDown){
+			rFlipper.keyPressed(rShiftDown);
+			setLFlipper(rFlipper.getFlipAngleIndex() - 1);
+		}
+		repaint();
 	}
 
 	public void paintComponent(Graphics g){
@@ -86,14 +102,21 @@ public class Game extends JPanel implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT) {
-			lFlipper.keyPressed();
-			setLFlipper(lFlipper.getFlipAngleIndex() - 1);
+			lShiftDown = true;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT) {
+			rShiftDown = true;
 		}
 	}
 
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-
+		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT) {
+			lShiftDown = false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT) {
+			rShiftDown = false;
+		}
 	}
 }

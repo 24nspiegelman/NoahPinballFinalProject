@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
 public class Flipper {
 
@@ -26,7 +27,6 @@ public class Flipper {
     }
 
     public void moveLFlipper(int place){
-        //setStartY(place);
         setEndY(place);
         setEndX(getStartX() + (int)(Math.sqrt(((Math.pow(flapLength, 2))) - ((Math.pow((getEndY() - getStartY()),2))))));
     }
@@ -36,12 +36,15 @@ public class Flipper {
         setEndX(getStartX() - (int)(Math.sqrt(((Math.pow(flapLength, 2))) - ((Math.pow((getEndY() - getStartY()),2))))));
     }
 
-    public int keyPressed() {
-        if (flipAngleIndex > 1){
-            setFlipAngleIndex(flipAngleIndex-1);
-            System.out.println(flipAngleIndex);
+    public void keyPressed(boolean down) {
+        flipAngleIndex -= 1;
+        if (flipAngleIndex < 1 && down == false){
+            setFlipAngleIndex(5);
         }
-        return flipAngleIndex;
+        if (flipAngleIndex > 1){
+            setFlipAngleIndex(flipAngleIndex);
+
+        }
     }
 
 
@@ -66,7 +69,7 @@ public class Flipper {
     public void setEndY(int yPos){
         endY = yPos;
     }
-    public static int getFlapLength(){
+    public int getFlapLength(){
         return flapLength;
     }
     public int getFlipAngleIndex(){

@@ -15,9 +15,7 @@ public class Main {
         game.requestFocus();
 
         while (true) {
-            game.getBall().moveBall();
-            game.getBall().flapHit(game.getLFlapper(), game.getRFlapper());
-            game.repaint();
+            game.act();
             Thread.sleep(10);
         }
     }

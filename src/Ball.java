@@ -9,6 +9,7 @@ public class Ball {
     private double xVel;
     private double yVel;
     private double gravity;
+    private double velocity;
 
 
     public Ball(){
@@ -17,9 +18,11 @@ public class Ball {
         xVel = 0.75;
         yVel = 0.75;
         gravity = 0.5;
+        velocity = Math.sqrt(Math.pow(xVel, 2) + Math.pow(yVel, 2));
     }
     public void moveBall() {
         yVel += gravity;
+        velocity = Math.sqrt(Math.pow(xVel, 2) + Math.pow(yVel, 2));
         xPos = xPos + xVel;
         yPos = yPos + yVel;
         bounce();
@@ -42,10 +45,14 @@ public class Ball {
 
     public void flapHit(Flipper l, Flipper r){
         if (xPos > (l.getStartX() - 5)  && xPos < (l.getEndX() + 5) && yPos > (l.getStartY() - 5) && yPos < (l.getStartY() + 5) && yVel > 0){
-                yVel *= -1;
+            xVel = (getXPos() - l.getEndX())/(l.getFlapLength()/2) * 4;
+            yVel = Math.sqrt(Math.pow(velocity, 2)-Math.pow(xVel, 2));
+            yVel *= -1;
         }
         if (xPos < r.getStartX() && xPos > r.getEndX() && yPos > (r.getStartY() - 5) && yPos < (r.getStartY() + 5) && yVel > 0){
-                yVel *= -1;
+            xVel = (getXPos() - r.getEndX())/(r.getFlapLength()/2) * 4;
+            yVel = Math.sqrt(Math.pow(velocity, 2)-Math.pow(xVel, 2));
+            yVel *= -1;
 
         }
 
