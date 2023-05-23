@@ -24,25 +24,26 @@ public class Game extends JPanel implements KeyListener{
 	}
 
 	public void act(){
-		getBall().moveBall();
-		getBall().flapHit(getLFlapper(), getRFlapper());
-		if (lShiftDown){
-			lFlipper.keyPressed(lShiftDown);
-			setLFlipper(lFlipper.getFlipAngleIndex() - 1);
-		}
-		else{
-			lFlipper.keyPressed(lShiftDown);
-			setLFlipper(lFlipper.getFlipAngleIndex() + 1);
-		}
-
-		if (rShiftDown){
-			rFlipper.keyPressed(rShiftDown);
-			setRFlipper(rFlipper.getFlipAngleIndex() - 1);
-		}
-		else{
-			rFlipper.keyPressed(rShiftDown);
-			setRFlipper(rFlipper.getFlipAngleIndex() + 1);
-		}
+		getBall().moveBall(lFlipper, rFlipper);
+		lFlipper.keyPressed(lShiftDown);
+		rFlipper.keyPressed(rShiftDown);
+//		if (lShiftDown){
+//			lFlipper.keyPressed(lShiftDown);
+//			setLFlipper(lFlipper.getFlipAngleIndex() - 1);
+//		}
+//		else{
+//			lFlipper.keyPressed(lShiftDown);
+//			setLFlipper(lFlipper.getFlipAngleIndex() + 1);
+//		}
+//
+//		if (rShiftDown){
+//			rFlipper.keyPressed(rShiftDown);
+//			setRFlipper(rFlipper.getFlipAngleIndex() - 1);
+//		}
+//		else{
+//			rFlipper.keyPressed(rShiftDown);
+//			setRFlipper(rFlipper.getFlipAngleIndex() + 1);
+//		}
 		repaint();
 	}
 

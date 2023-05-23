@@ -20,12 +20,13 @@ public class Ball {
         gravity = 0.5;
         velocity = Math.sqrt(Math.pow(xVel, 2) + Math.pow(yVel, 2));
     }
-    public void moveBall() {
+    public void moveBall(Flipper l, Flipper r) {
         yVel += gravity;
         velocity = Math.sqrt(Math.pow(xVel, 2) + Math.pow(yVel, 2));
         xPos = xPos + xVel;
         yPos = yPos + yVel;
         bounce();
+        flapHit(l, r);
     }
     public void bounce(){
         if ((xPos > 560 && xVel > 0) || (xPos < 0 && xVel <0)){
@@ -44,18 +45,20 @@ public class Ball {
     }
 
     public void flapHit(Flipper l, Flipper r){
-        if (xPos > (l.getStartX() - 5)  && xPos < (l.getEndX() + 5) && yPos > (l.getStartY() - 5) && yPos < (l.getStartY() + 5) && yVel > 0){
-            xVel = (getXPos() - l.getEndX())/(l.getFlapLength()/2) * 4;
-            yVel = Math.sqrt(Math.pow(velocity, 2)-Math.pow(xVel, 2));
-            yVel *= -1;
+        if (xPos > (l.getStartX() - 5)  && xPos < (l.getEndX() + 5) && yPos > (l.getStartY() - 5) && yPos < (l.getEndY() + 5) && yVel > 0) {
+            if (yPos < l.getStartY() && yPos + yVel > l.getEndY()) {
+                xVel = (getXPos() - l.getEndX()) / (l.getFlapLength() / 2) * 4;
+                yVel = Math.sqrt(Math.pow(velocity, 2) - Math.pow(xVel, 2));
+                yVel *= -1;
+            }
         }
-        if (xPos < r.getStartX() && xPos > r.getEndX() && yPos > (r.getStartY() - 5) && yPos < (r.getStartY() + 5) && yVel > 0){
-            xVel = (getXPos() - r.getEndX())/(r.getFlapLength()/2) * 4;
-            yVel = Math.sqrt(Math.pow(velocity, 2)-Math.pow(xVel, 2));
-            yVel *= -1;
-
+        if (xPos < r.getStartX() && xPos > r.getEndX() && yPos > (r.getStartY() - 5) && yPos < (r.getEndY() + 5) && yVel > 0){
+            if (yPos < r.getStartY() && yPos + yVel > r.getEndY()) {
+                xVel = (getXPos() - r.getEndX()) / (r.getFlapLength() / 2) * 4;
+                yVel = Math.sqrt(Math.pow(velocity, 2) - Math.pow(xVel, 2));
+                yVel *= -1;
+            }
         }
-
     }
 
     public double getXPos(){
