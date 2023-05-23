@@ -41,7 +41,7 @@ public class Flipper {
 //        if (this.flipAngleIndex < 1 && down == false){
 //            setFlipAngleIndex(5);
 //        }
-        if (this.flipAngleIndex > 1){
+        if (this.flipAngleIndex > 1 && down){
             setFlipAngleIndex(this.flipAngleIndex);
 
         }

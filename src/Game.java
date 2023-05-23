@@ -37,11 +37,11 @@ public class Game extends JPanel implements KeyListener{
 
 		if (rShiftDown){
 			rFlipper.keyPressed(rShiftDown);
-			setLFlipper(rFlipper.getFlipAngleIndex() - 1);
+			setRFlipper(rFlipper.getFlipAngleIndex() - 1);
 		}
 		else{
 			rFlipper.keyPressed(rShiftDown);
-			setLFlipper(rFlipper.getFlipAngleIndex() + 1);
+			setRFlipper(rFlipper.getFlipAngleIndex() + 1);
 		}
 		repaint();
 	}
@@ -112,11 +112,11 @@ public class Game extends JPanel implements KeyListener{
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT) {
 			lShiftDown = true;
-			System.out.println("LTrue");
+			System.out.println("LShiftDown: " + lShiftDown);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT) {
 			rShiftDown = true;
-			System.out.println("RTrue");
+			System.out.println("rShift Down: " + rShiftDown);
 		}
 	}
 
@@ -125,11 +125,11 @@ public class Game extends JPanel implements KeyListener{
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT) {
 			lShiftDown = false;
-			System.out.println("LFalse");
+			System.out.println("LShiftDown: " + lShiftDown);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT) {
 			rShiftDown = false;
-			System.out.println("RFalse");
+			System.out.println("rShift Down: " + rShiftDown);
 		}
 	}
 }
