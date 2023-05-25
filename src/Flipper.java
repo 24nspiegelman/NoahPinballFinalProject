@@ -22,7 +22,7 @@ public class Flipper {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setStroke(new BasicStroke(6));
+        g2d.setStroke(new BasicStroke(10));
         g2d.drawLine(startX, startY, endX, endY);
     }
 
@@ -47,6 +47,11 @@ public class Flipper {
         }
 
     }
+
+    public Rectangle getBounds() {
+        return new Rectangle(startX, startY, flapLength, 10);
+    }
+
 
 
     public int getStartX(){

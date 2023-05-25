@@ -1,6 +1,4 @@
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import java.awt.*;
 
 public class Ball {
 
@@ -9,14 +7,15 @@ public class Ball {
     private double xVel;
     private double yVel;
     private double gravity;
+    int x = 0;
 
 
     public Ball(){
         xPos = 520;
         yPos = 735;
-        xVel = -3;
-        yVel = -3;
-        gravity = -2.5;
+        xVel = -10;
+        yVel = -10;
+        gravity = 0.125;
     }
     public void moveBall(Flipper l, Flipper r) {
         yVel += gravity;
@@ -30,19 +29,22 @@ public class Ball {
             xVel *= -1;
         }
         if (yPos < 0 && yVel < 0){
-            yVel *= -1;
-            if (gravity < 0){
-                gravity = 2.5;
+            if (gravity < 0 && x == 0){
+                gravity = 3;
+                x = 1;
             }
+            yVel *= -1;
         }
         if ((yPos > 717 && yVel > 0)){
             yVel *= -1;
         }
-        if (yVel <= 0 && yVel > -1 && yPos >= 749){
+        if (yVel <= 0 && yPos >= 900){
             reset();
         }
     }
-
+    public Rectangle getBounds() {
+        return new Rectangle((int) xPos,(int) yPos, 10, 10);
+    }
     public void paintBall(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -52,20 +54,22 @@ public class Ball {
 
     public void flapHit(Flipper l, Flipper r){
         if (xPos >= l.getStartX() && xPos <= l.getEndX() && (yPos <= l.getStartY() && (yPos + yVel) >= l.getStartY())) {
-            yVel += 3;
+//            yVel += 3;
             yVel *= -1;
         }
         if (xPos >= r.getStartX() && xPos <= r.getEndX() && (yPos <= r.getStartY() && ((yPos + yVel) >= r.getStartY())) && yVel >= 0) {
-            yVel += 3;
+//            yVel += 3;
             yVel *= -1;
         }
     }
 
         public void reset(){
-            xPos = 540;
-            yPos = 748;
+            xPos = 520;
+            yPos = 735;
             xVel = -3;
             yVel = -3;
+            gravity = 2;
+            x = 0;
         }
 
     public int getXPos(){
@@ -77,7 +81,13 @@ public class Ball {
     public double getXVel(){
         return this.xVel;
     }
+    public void setXVel(double x){
+        xVel = x;
+    }
     public double getYVel(){
         return this.yVel;
+    }
+    public void setYVel(double y){
+        yVel = y;
     }
 }
