@@ -8,15 +8,15 @@ public class Ball {
     private double yPos;
     private double xVel;
     private double yVel;
-    private final double gravity;
+    private double gravity;
 
 
     public Ball(){
-        xPos = 0;
-        yPos = 0;
-        xVel = 3;
-        yVel = 3;
-        gravity = 2.5;
+        xPos = 520;
+        yPos = 730;
+        xVel = -3;
+        yVel = -3;
+        gravity = -2.5;
     }
     public void moveBall(Flipper l, Flipper r) {
         yVel += gravity;
@@ -26,13 +26,19 @@ public class Ball {
         flapHit(l, r);
     }
     public void bounce(){
-        if ((xPos > 560 && xVel > 0) || (xPos < 0 && xVel <0)){
+        if ((xPos > 550 && xVel > 0) || (xPos < 0 && xVel <0)){
             xVel *= -1;
         }
-        if ((yPos < 0 && yVel < 0) || (yPos > 717 && yVel > 0)){
+        if (yPos < 0 && yVel < 0){
+            yVel *= -1;
+            if (gravity < 0){
+                gravity = 2.5;
+            }
+        }
+        if ((yPos > 717 && yVel > 0)){
             yVel *= -1;
         }
-        if (yVel < 0 && yVel > -1 && yPos > 749){
+        if (yVel <= 0 && yVel > -1 && yPos >= 749){
             reset();
         }
     }
@@ -45,20 +51,21 @@ public class Ball {
     }
 
     public void flapHit(Flipper l, Flipper r){
-        System.out.println("Start: " + r.getStartY()+ "\n" + "Ball: " + yPos);
         if (xPos >= l.getStartX() && xPos <= l.getEndX() && (yPos <= l.getStartY() && (yPos + yVel) >= l.getStartY())) {
+            yVel += 3;
             yVel *= -1;
         }
-        if (xPos <= r.getStartX() && xPos >= r.getEndX() && (yPos <= r.getStartY() && (yPos + yVel) >= r.getStartY())) {
+        if (xPos >= r.getStartX() && xPos <= r.getEndX() && (yPos <= r.getStartY() && ((yPos + yVel) >= r.getStartY())) && yVel >= 0) {
+            yVel += 3;
             yVel *= -1;
         }
     }
 
         public void reset(){
-            xPos = 350;
-            yPos = 350;
-            xVel = 0.75;
-            yVel = 0.75;
+            xPos = 540;
+            yPos = 748;
+            xVel = -3;
+            yVel = -3;
         }
 
     public int getXPos(){

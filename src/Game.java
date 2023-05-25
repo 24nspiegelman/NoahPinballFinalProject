@@ -20,11 +20,12 @@ public class Game extends JPanel implements KeyListener{
 	public void start(){
 		ball = new Ball();
 		lFlipper = new Flipper(150, 250, 540, 540);
-		rFlipper = new Flipper(430, 330, 540, 540);
+		rFlipper = new Flipper(330, 440, 540, 540);
 	}
 
 	public void act(){
-		getBall().moveBall(lFlipper, rFlipper);
+		ball.moveBall(lFlipper, rFlipper);
+		System.out.println(ball.getYPos());
 		lFlipper.keyPressed(lShiftDown);
 		rFlipper.keyPressed(rShiftDown);
 		repaint();
