@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.event.KeyEvent;
+import java.util.TimerTask;
 
 public class Main {
 
@@ -14,9 +15,14 @@ public class Main {
 
         game.requestFocus();
 
-        while (true) {
-            game.act();
-            Thread.sleep(10);
-        }
+        java.util.Timer t = new java.util.Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                game.act();
+            }
+        };
+        long delay = 10;
+        t.scheduleAtFixedRate(task, delay, 30);
     }
 }

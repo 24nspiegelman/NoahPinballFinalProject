@@ -9,8 +9,8 @@ public class Game extends JPanel implements KeyListener{
 	Ball ball;
 	Flipper lFlipper;
 	Flipper rFlipper;
-	boolean lShiftDown;
-	boolean rShiftDown;
+	boolean lShiftDown, rShiftDown;
+
 
 	public Game(){
 		setFocusable(true);
@@ -19,31 +19,14 @@ public class Game extends JPanel implements KeyListener{
 
 	public void start(){
 		ball = new Ball();
-		lFlipper = new Flipper(150, 230, 540, 540);
-		rFlipper = new Flipper(430, 350, 540, 540);
+		lFlipper = new Flipper(150, 250, 540, 540);
+		rFlipper = new Flipper(430, 330, 540, 540);
 	}
 
 	public void act(){
 		getBall().moveBall(lFlipper, rFlipper);
 		lFlipper.keyPressed(lShiftDown);
 		rFlipper.keyPressed(rShiftDown);
-//		if (lShiftDown){
-//			lFlipper.keyPressed(lShiftDown);
-//			setLFlipper(lFlipper.getFlipAngleIndex() - 1);
-//		}
-//		else{
-//			lFlipper.keyPressed(lShiftDown);
-//			setLFlipper(lFlipper.getFlipAngleIndex() + 1);
-//		}
-//
-//		if (rShiftDown){
-//			rFlipper.keyPressed(rShiftDown);
-//			setRFlipper(rFlipper.getFlipAngleIndex() - 1);
-//		}
-//		else{
-//			rFlipper.keyPressed(rShiftDown);
-//			setRFlipper(rFlipper.getFlipAngleIndex() + 1);
-//		}
 		repaint();
 	}
 
@@ -113,11 +96,9 @@ public class Game extends JPanel implements KeyListener{
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT) {
 			lShiftDown = true;
-			System.out.println("LShiftDown: " + lShiftDown);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT) {
 			rShiftDown = true;
-			System.out.println("rShift Down: " + rShiftDown);
 		}
 	}
 
@@ -126,11 +107,9 @@ public class Game extends JPanel implements KeyListener{
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT) {
 			lShiftDown = false;
-			System.out.println("LShiftDown: " + lShiftDown);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SHIFT && e.getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT) {
 			rShiftDown = false;
-			System.out.println("rShift Down: " + rShiftDown);
 		}
 	}
 }

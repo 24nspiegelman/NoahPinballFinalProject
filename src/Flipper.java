@@ -8,7 +8,7 @@ public class Flipper {
     private int endX;
     private int endY;
     static final int flapLength = 80;
-    private int flipAngleIndex = 5;
+    private int flipAngleIndex = 1;
 
 
     public Flipper(int startX, int endX, int startY, int endY){
@@ -28,22 +28,22 @@ public class Flipper {
 
     public void moveLFlipper(int place){
         setEndY(place);
-        setEndX(getStartX() + (int)(Math.sqrt(((Math.pow(flapLength, 2))) - ((Math.pow((getEndY() - getStartY()),2))))));
+        setStartY(place);
+//        setEndX(getStartX() + (int)(Math.sqrt(((Math.pow(flapLength, 2))) - ((Math.pow((getEndY() - getStartY()),2))))));
     }
 
     public void moveRFlipper(int place){
         setEndY(place);
-        setEndX(getStartX() - (int)(Math.sqrt(((Math.pow(flapLength, 2))) - ((Math.pow((getEndY() - getStartY()),2))))));
+        setStartY(place);
+//        setEndX(getStartX() - (int)(Math.sqrt(((Math.pow(flapLength, 2))) - ((Math.pow((getEndY() - getStartY()),2))))));
     }
 
     public void keyPressed(boolean down) {
-        if (this.flipAngleIndex > 1 && down){
+        if (down){
             this.flipAngleIndex -= 1;
-            setFlipAngleIndex(this.flipAngleIndex);
-
         }
-        if (this.flipAngleIndex > 1 && down == false){
-            setFlipAngleIndex(5);
+        else{
+            flipAngleIndex = 5;
         }
 
     }
