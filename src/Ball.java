@@ -13,7 +13,7 @@ public class Ball {
 
     public Ball(){
         xPos = 520;
-        yPos = 730;
+        yPos = 735;
         xVel = -3;
         yVel = -3;
         gravity = -2.5;
