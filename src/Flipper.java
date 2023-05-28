@@ -48,9 +48,6 @@ public class Flipper {
 
     }
 
-    public Rectangle getBounds() {
-        return new Rectangle(startX, startY, flapLength, 10);
-    }
 
 
 

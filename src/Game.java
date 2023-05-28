@@ -54,20 +54,15 @@ public class Game extends JPanel implements KeyListener{
 		else if (pos == 5){
 			lFlipper.moveLFlipper(604);
 		}
-//		if (ball.getXPos() >= lFlipper.getStartX() && ball.getXPos() <= lFlipper.getEndX() && (ball.getYPos() <= lFlipper.getStartY() && (ball.getYPos() + ball.getYVel()) >= lFlipper.getStartY() + 16)) {
-////            yVel += 3;
-//			ball.setYVel(ball.getYVel() * -1);
-//		}
-//		if (ball.getXPos() >= rFlipper.getStartX() && ball.getXPos() <= rFlipper.getEndX() && (ball.getYPos() <= rFlipper.getStartY() && ((ball.getYPos() + ball.getYVel()) >= rFlipper.getStartY())) && ball.getYVel() >= 0) {
-////            yVel += 3;
-//			ball.setYVel(ball.getYVel() * -1);
-//		}
-		Rectangle flipperBounds = lFlipper.getBounds();
-		Rectangle ballBounds = ball.getBounds();
-
-		if (lShiftDown && flipperBounds.intersects(ballBounds)) {
+		if (ball.getXPos() >= lFlipper.getStartX() && ball.getXPos() <= lFlipper.getEndX() && (ball.getYPos() <= lFlipper.getStartY() && (ball.getYPos() + ball.getYVel()) >= lFlipper.getStartY() + 16)) {
+//            yVel += 3;
 			ball.setYVel(ball.getYVel() * -1);
 		}
+		if (ball.getXPos() >= rFlipper.getStartX() && ball.getXPos() <= rFlipper.getEndX() && (ball.getYPos() <= rFlipper.getStartY() && ((ball.getYPos() + ball.getYVel()) >= rFlipper.getStartY())) && ball.getYVel() >= 0) {
+//            yVel += 3;
+			ball.setYVel(ball.getYVel() * -1);
+		}
+
 	}
 
 	public void setRFlipper(int pos){

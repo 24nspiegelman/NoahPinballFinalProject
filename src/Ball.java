@@ -42,9 +42,6 @@ public class Ball {
             reset();
         }
     }
-    public Rectangle getBounds() {
-        return new Rectangle((int) xPos,(int) yPos, 10, 10);
-    }
     public void paintBall(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
