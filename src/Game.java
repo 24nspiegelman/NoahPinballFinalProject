@@ -26,7 +26,7 @@ public class Game extends JPanel implements KeyListener{
 	}
 
 	public void act(){
-		ball.moveBall(lFlip, rFlip);
+		ball.moveBall(lFlip, rFlip, one);
 		lFlip.keyPressed(lShiftDown);
 		rFlip.keyPressed(rShiftDown);
 		repaint();

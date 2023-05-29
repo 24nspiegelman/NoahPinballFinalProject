@@ -17,12 +17,13 @@ public class Ball {
         yVel = -15;
         gravity = 0.125;
     }
-    public void moveBall(Flipper l, Flipper r) {
+    public void moveBall(Flipper l, Flipper r, Obstacle o) {
         yVel += gravity;
         xPos = xPos + xVel;
         yPos = yPos + yVel;
         bounce();
         flapHit(l, r);
+        obstacleHit(o);
     }
     public void bounce(){
         if ((xPos > 550 && xVel > 0) || (xPos < 0 && xVel <0)){
@@ -64,9 +65,19 @@ public class Ball {
     public void obstacleHit(Obstacle o){
         if (xPos >= o.getXPos() && xPos <= o.getEX()){
             if (yPos <= o.getYPos() && o.getYPos() <= (yPos + yVel) && yVel > 0){
-
+                yVel *= -1;
             }
-            if ()
+            if (yPos>= o.getEY() && o.getYPos() >= (yPos + yVel) && yVel < 0){
+                yVel *= -1;
+            }
+        }
+        if (yPos >= o.getYPos() && yPos <= o.getEY()){
+            if (xPos <= o.getXPos() && o.getXPos() <= (xPos + xVel) && xVel > 0){
+                xVel *= -1;
+            }
+            if (xPos >= o.getEX() && o.getXPos() <= (xPos + xVel) && xVel < 0){
+                xVel *= -1;
+            }
         }
     }
         public void reset(){
