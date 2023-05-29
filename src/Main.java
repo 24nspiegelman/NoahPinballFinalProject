@@ -22,7 +22,7 @@ public class Main {
                 game.act();
             }
         };
-        long delay = 10;
+        long delay = 5;
         t.scheduleAtFixedRate(task, delay, 30);
     }
 }

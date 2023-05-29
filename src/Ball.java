@@ -13,8 +13,8 @@ public class Ball {
     public Ball(){
         xPos = 520;
         yPos = 735;
-        xVel = -10;
-        yVel = -10;
+        xVel = -15;
+        yVel = -15;
         gravity = 0.125;
     }
     public void moveBall(Flipper l, Flipper r) {
@@ -57,9 +57,18 @@ public class Ball {
         if (xPos >= r.getStartX() && xPos <= r.getEndX() && (yPos <= r.getStartY() && ((yPos + yVel) >= r.getStartY())) && yVel >= 0) {
 //            yVel += 3;
             yVel *= -1;
+
         }
     }
 
+    public void obstacleHit(Obstacle o){
+        if (xPos >= o.getXPos() && xPos <= o.getEX()){
+            if (yPos <= o.getYPos() && o.getYPos() <= (yPos + yVel) && yVel > 0){
+
+            }
+            if ()
+        }
+    }
         public void reset(){
             xPos = 520;
             yPos = 735;
@@ -86,5 +95,8 @@ public class Ball {
     }
     public void setYVel(double y){
         yVel = y;
+    }
+    public double getGravity(){
+        return gravity;
     }
 }

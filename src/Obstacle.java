@@ -6,14 +6,13 @@ public class Obstacle extends Rectangle {
     private int width;
     private int height;
 
-    public Obstacle(int xPos, int yPos, int width, int height){
-        this.xPos = xPos;
-        this.yPos = yPos;
-
-        this.width = width;
-        this.height = height;
+    public Obstacle(){
+        xPos = 250;
+        yPos = 250;
+        width = 100;
+        height = 100;
     }
-    public void PaintObstacle(Graphics g){
+    public void paintObstacle(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
@@ -21,19 +20,19 @@ public class Obstacle extends Rectangle {
 
     }
 
-    public int getxPos() {
+    public int getXPos() {
         return xPos;
     }
 
-    public void setxPos(int xPos) {
+    public void setXPos(int xPos) {
         this.xPos = xPos;
     }
 
-    public int getyPos() {
+    public int getYPos() {
         return yPos;
     }
 
-    public void setyPos(int yPos) {
+    public void setYPos(int yPos) {
         this.yPos = yPos;
     }
 
@@ -53,5 +52,12 @@ public class Obstacle extends Rectangle {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public int getEX(){
+        return xPos + width;
+    }
+    public int getEY(){
+        return yPos + height;
     }
 }
