@@ -10,6 +10,7 @@ public class Game extends JPanel implements KeyListener{
 	Flipper lFlipper;
 	Flipper rFlipper;
 	boolean lShiftDown, rShiftDown;
+	Obstacle one;
 
 
 	public Game(){
