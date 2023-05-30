@@ -22,7 +22,7 @@ public class Ball {
         xPos = xPos + xVel;
         yPos = yPos + yVel;
         bounce();
-        flapHit(l, r);
+        flipHit(l, r);
         obstacleHit(one);
         obstacleHit(two);
         obstacleHit(three);
@@ -53,13 +53,14 @@ public class Ball {
         g2d.fillOval( getXPos(),getYPos(), 10, 10);
     }
 
-    public void flapHit(Flipper l, Flipper r){
+    public void flipHit(Flipper l, Flipper r){
         if (xPos >= l.getStartX() && xPos <= l.getEndX() && (yPos <= l.getStartY() && (yPos + yVel) >= l.getStartY())) {
             yVel *= -1;
+            yVel -= gravity * 2;
         }
         if (xPos >= r.getStartX() && xPos <= r.getEndX() && (yPos <= r.getStartY() && ((yPos + yVel) >= r.getStartY())) && yVel >= 0) {
             yVel *= -1;
-
+            yVel -= gravity * 2;
         }
     }
 
