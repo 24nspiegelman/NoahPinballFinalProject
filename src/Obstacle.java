@@ -13,7 +13,7 @@ public class Obstacle extends Rectangle {
         this.yPos = yPos;
         this.width = width;
         this.height = height;
-        color = Color.BLACK;
+        color = Color.WHITE;
     }
     public void paintObstacle(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
@@ -21,10 +21,10 @@ public class Obstacle extends Rectangle {
                 RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(color);
         g2d.fillRect(xPos, yPos, width, height);
-        if (!color.equals(Color.BLACK)){
+        if (!color.equals(Color.WHITE)){
             x++;
             if (x == 15) {
-                color = Color.BLACK;
+                color = Color.WHITE;
                 x = 0;
             }
         }

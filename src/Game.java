@@ -23,11 +23,11 @@ public class Game extends JPanel implements KeyListener{
 	public void start(){
 		ball = new Ball();
 		one = new Obstacle(35, 125,110, 60);
-		two = new Obstacle(215, 250, 110, 60);
+		two = new Obstacle(215, 275, 110, 60);
 		three = new Obstacle(400, 125, 110,60 );
 		lFlip = new Flipper(150, 250, 540, 540);
 		rFlip = new Flipper(330, 440, 540, 540);
-		setBackground(Color.pink);
+		setBackground(Color.black);
 	}
 
 	public void act(){
