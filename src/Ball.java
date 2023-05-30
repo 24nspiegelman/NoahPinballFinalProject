@@ -17,13 +17,15 @@ public class Ball {
         yVel = -15;
         gravity = 0.125;
     }
-    public void moveBall(Flipper l, Flipper r, Obstacle o) {
+    public void moveBall(Flipper l, Flipper r, Obstacle one, Obstacle two, Obstacle three) {
         yVel += gravity;
         xPos = xPos + xVel;
         yPos = yPos + yVel;
         bounce();
         flapHit(l, r);
-        obstacleHit(o);
+        obstacleHit(one);
+        obstacleHit(two);
+        obstacleHit(three);
     }
     public void bounce(){
         if ((xPos > 550 && xVel > 0) || (xPos < 0 && xVel <0)){
@@ -66,17 +68,21 @@ public class Ball {
         if (xPos >= o.getXPos() && xPos <= o.getEX()){
             if (yPos <= o.getYPos() && o.getYPos() <= (yPos + yVel) && yVel > 0){
                 yVel *= -1;
+                o.setColor(Color.CYAN);
             }
-            if (yPos>= o.getEY() && o.getYPos() >= (yPos + yVel) && yVel < 0){
+            if (yPos >= o.getEY() && (yPos + yVel) <= o.getEY() && yVel < 0){
                 yVel *= -1;
+                o.setColor(Color.MAGENTA);
             }
         }
         if (yPos >= o.getYPos() && yPos <= o.getEY()){
             if (xPos <= o.getXPos() && o.getXPos() <= (xPos + xVel) && xVel > 0){
                 xVel *= -1;
+                o.setColor(Color.RED);
             }
-            if (xPos >= o.getEX() && o.getXPos() <= (xPos + xVel) && xVel < 0){
+            if (xPos >= o.getEX() && o.getEX() >= (xPos + xVel) && xVel < 0){
                 xVel *= -1;
+                o.setColor(Color.GREEN);
             }
         }
     }

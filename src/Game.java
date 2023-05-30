@@ -11,6 +11,8 @@ public class Game extends JPanel implements KeyListener{
 	Flipper rFlip;
 	boolean lShiftDown, rShiftDown;
 	Obstacle one;
+	Obstacle two;
+	Obstacle three;
 
 
 	public Game(){
@@ -20,13 +22,16 @@ public class Game extends JPanel implements KeyListener{
 
 	public void start(){
 		ball = new Ball();
-		one = new Obstacle();
+		one = new Obstacle(35, 125,110, 60);
+		two = new Obstacle(215, 250, 110, 60);
+		three = new Obstacle(400, 125, 110,60 );
 		lFlip = new Flipper(150, 250, 540, 540);
 		rFlip = new Flipper(330, 440, 540, 540);
+		setBackground(Color.pink);
 	}
 
 	public void act(){
-		ball.moveBall(lFlip, rFlip, one);
+		ball.moveBall(lFlip, rFlip, one, two, three);
 		lFlip.keyPressed(lShiftDown);
 		rFlip.keyPressed(rShiftDown);
 		repaint();
@@ -35,6 +40,8 @@ public class Game extends JPanel implements KeyListener{
 	public void paintComponent(Graphics g){
 		ball.paintBall(g);
 		one.paintObstacle(g);
+		two.paintObstacle(g);
+		three.paintObstacle(g);
 		setLFlipper(lFlip.getFlipAngleIndex());
 		setRFlipper(rFlip.getFlipAngleIndex());
 		lFlip.paintFlipper(g);
